@@ -1,0 +1,60 @@
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+    <div class="form-group">
+        <label for="countryname">Country Name</label>
+        <input #countryname="ngModel" ngModel for="countryname"  name="countryname" id="countryname" type="text" class="form-control"  >
+        <div class="alert alert-danger" *ngIf="countryname.touched && countryname.invalid">
+            Country Name is required..!
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="currencyname">Currency Name</label>
+        <input #currencyname="ngModel" ngModel for="currencyname"  name="currencyname" id="currencyname" type="text" class="form-control"  >
+        <div class="alert alert-danger" *ngIf="currencyname.touched && currencyname.invalid">
+            Currency Name is required..!
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="alphacode">Alpha Code</label>
+        <input #alphacode="ngModel" ngModel name="alphacode" id="alphacode" type="text" class="form-control"  >
+        <div class="alert alert-danger" *ngIf="alphacode.touched && alphacode.invalid">
+            Alpha Code is required..!
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="numericcode">Numeric Code</label>
+        <div class="input-group">
+        <span class="input-group-text">$</span>
+        <input #numericcode="ngModel" ngModel name="numericcode" id="numericcode" type="number" class="form-control" required>
+    </div>
+    <div class="alert alert-danger" *ngIf="numericcode.touched && numericcode.invalid">Price Required</div>
+    </div>
+
+    <div class="form-group">
+
+    <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Active</mat-radio-button>
+        <mat-radio-button value="2">In-Active</mat-radio-button>
+      </mat-radio-group>
+    </div>
+      
+
+    <button class="btn btn-primary">Save</button>
+
+</form>
+
+    <!-- <div class="form-group">
+        <label for="catagory">Catagory</label>
+        <select #catagory="ngModel" ngModel name="catagory" id="catagory"  class="form-control" required>
+        <option value="" ></option>
+        <option *ngFor="let a of user$ | async" value= "{{ a.name }}    ">
+            {{ a.name }}
+        </option>
+        </select>  
+        <div class="alert alert-danger" *ngIf="catagory.touched && catagory.invalid">Please Select</div>
+ 
+    </div> -->
+
+    
+   
+
