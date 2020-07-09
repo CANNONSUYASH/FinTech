@@ -1,21 +1,24 @@
-<form #f="ngForm" (ngSubmit)="save(f.value)">
+<form #form="ngForm" (ngSubmit)="save(form.value)" >
+    
     <div class="form-group">
         <label for="countryname">Country Name</label>
-        <input #countryname="ngModel" ngModel for="countryname"  name="countryname" id="countryname" type="text" class="form-control"  >
+        <input  #countryname="ngModel"  [(ngModel)]="table$.countryname" name="countryname" id="countryname" type="text" class="form-control" >
         <div class="alert alert-danger" *ngIf="countryname.touched && countryname.invalid">
             Country Name is required..!
         </div>
     </div>
+    
     <div class="form-group">
         <label for="currencyname">Currency Name</label>
-        <input #currencyname="ngModel" ngModel for="currencyname"  name="currencyname" id="currencyname" type="text" class="form-control"  >
+        <input   #currencyname="ngModel" [(ngModel)]="table$.currencyname"  name="currencyname" id="currencyname" type="text" class="form-control" required >
         <div class="alert alert-danger" *ngIf="currencyname.touched && currencyname.invalid">
-            Currency Name is required..!
+            Currency Name is  Required
         </div>
     </div>
+    
     <div class="form-group">
         <label for="alphacode">Alpha Code</label>
-        <input #alphacode="ngModel" ngModel name="alphacode" id="alphacode" type="text" class="form-control"  >
+        <input #alphacode="ngModel" [(ngModel)]="table$.alphacode"  name="alphacode" id="alphacode" type="text" class="form-control" required  >
         <div class="alert alert-danger" *ngIf="alphacode.touched && alphacode.invalid">
             Alpha Code is required..!
         </div>
@@ -25,7 +28,7 @@
         <label for="numericcode">Numeric Code</label>
         <div class="input-group">
         <span class="input-group-text">$</span>
-        <input #numericcode="ngModel" ngModel name="numericcode" id="numericcode" type="number" class="form-control" required>
+        <input #numericcode="ngModel"  [(ngModel)]="table$.numericcode" name="numericcode" id="numericcode" type="number" class="form-control" required>
     </div>
     <div class="alert alert-danger" *ngIf="numericcode.touched && numericcode.invalid">Price Required</div>
     </div>

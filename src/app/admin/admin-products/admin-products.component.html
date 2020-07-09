@@ -1,28 +1,58 @@
- 
-<p>
-<a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
-</p>
+    
+    <p>
+    <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+    </p>
+    <p><input
+        #query 
+        (keyup)="filter(query.value)" 
+            type="text" class="input form-control" placeholder="Search..."/>
+        </p>
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Country Name</th>
+                <th>Currency Name</th>
+                <th>Alphabetic Code</th>
+                <th>Numeric Code</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>   
+        </thead>
+        <tbody>
+            <tr *ngFor="let tab of filteredProduct ">
+                <td>{{tab.data.countryname}}</td>
+                <td>{{tab.data.currencyname}}</td>
+                <td>{{tab.data.alphacode}}</td>
+                <td>{{tab.data.numericcode}}</td>
+                <td>{{tab.data.statuscode}}</td>
+    
+                <td>
+                    <a class="edit" title="Edit" data-toggle="tooltip" [routerLink]="['/admin/products', tab.id]">
+                        <i class="material-icons">&#xE254;</i>
+                    </a>
+                    <a (click)="onDelete(tab.id)" class="delete" title="Delete" data-toggle="tooltip">
+                        <i class="material-icons">&#xE872;</i>
+                    </a>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Country Name</th>
-            <th>Currency Name</th>
-            <th>Alphabetic Code</th>
-            <th>Numeric Code</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let p of table$ | async">
-            <td>{{p.countryname}}</td>
-            <td>{{p.currencyname}}</td>
-            <td>{{p.alphacode}}</td>
-            <td>{{p.numericcode}}</td>
-            <td>{{p.statuscode}}</td>
-            <td>
-                <a [routerLink]="['/admin/products', p.$key]">Edit</a></td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+                    
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- <data-table 
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItem($event)"
+    >
+    <data-table-column
+    [property]="'countryname'"
+    [header]="'CountryName'"
+    [sortable]="true"
+    [resizable]="true"
+    >
+
+    </data-table-column>
+
+    </data-table> -->

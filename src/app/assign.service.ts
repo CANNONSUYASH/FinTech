@@ -8,7 +8,7 @@ export class AssignService {
 
   getAssignment(){
 
-   return this.db.list('/categories').valueChanges();
+   return this.db.list('/table').valueChanges();
  
   }
 
